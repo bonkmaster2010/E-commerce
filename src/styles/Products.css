@@ -1,0 +1,205 @@
+/* Product Detail Container */
+.product-detail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 40px auto;
+    gap: 40px;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Product Image Section */
+.product-detail__image-container {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.product-detail img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 16px;
+    border: 1px solid #e1e1e1;
+    background: #f8f9fa;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.product-detail img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Product Info Section */
+.product-detail__info {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.extra-details h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+}
+
+.extra-details h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #4361ee, #3a0ca3);
+    border-radius: 2px;
+}
+
+.extra-details p {
+    font-size: 1.1rem;
+    color: #4a5568;
+    margin: 12px 0;
+    line-height: 1.7;
+}
+
+/* Category Badge */
+.product-category {
+    display: inline-block;
+    background: #4361ee;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* About Item Section */
+#about-item {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #e2e8f0;
+}
+
+#about-item h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+#about-item p {
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.7;
+}
+
+/* Price and Action Section */
+.price-cont {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.price-cont p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #3a0ca3;
+    margin: 10px 0;
+}
+
+.price-cont .price-label {
+    font-size: 1rem;
+    color: #718096;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Action Buttons */
+.product-detail button {
+    padding: 16px 32px;
+    background: linear-gradient(to right, #4361ee, #3a0ca3);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    width: 100%;
+    max-width: 250px;
+    margin-top: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-detail button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+}
+
+.product-detail button:active {
+    transform: translateY(1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product-detail {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .product-detail__image-container,
+    .product-detail__info {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .extra-details h2 {
+        font-size: 1.6rem;
+    }
+    
+    .price-cont {
+        margin: 20px auto;
+        width: 100%;
+    }
+    
+    .product-detail button {
+        max-width: 100%;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product-detail__image-container,
+.product-detail__info {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.product-detail__info {
+    animation-delay: 0.1s;
+}
