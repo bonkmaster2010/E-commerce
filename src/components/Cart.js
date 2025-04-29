@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 function Cart() {
-    const { cartProducts, setCartProducts, cartTotal, setCartTotal, total, setTotal } = React.useContext(CartContext);
+    const { cartProducts, setCartProducts, total, setTotal } = React.useContext(CartContext);
     const navigate = useNavigate();
 
     function remove(productId) {

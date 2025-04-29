@@ -1,12 +1,7 @@
 /* Product Detail Container */
 .product-detail {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 40px auto;
-    gap: 40px;
-    max-width: 1200px;
+    flex-direction: column;
     padding: 20px;
 }
 
@@ -88,7 +83,8 @@
 
 /* About Item Section */
 #about-item {
-    margin-top: 30px;
+    margin-top: 0px;
+    margin-bottom: 30px;
     padding-top: 30px;
     border-top: 1px solid #e2e8f0;
 }
@@ -108,10 +104,13 @@
 
 /* Price and Action Section */
 .price-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background: #f8f9fa;
     padding: 25px;
     border-radius: 12px;
-    margin-top: 30px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     border: 1px solid #e2e8f0;
@@ -122,6 +121,12 @@
     font-weight: 700;
     color: #3a0ca3;
     margin: 10px 0;
+}
+
+.price-cont hr{
+    border: 2px solid #3a0ca3;
+    width: 200px;
+
 }
 
 .price-cont .price-label {

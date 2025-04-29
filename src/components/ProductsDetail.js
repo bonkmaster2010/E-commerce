@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import '../styles/Products.css'
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../context/ProductProvider";
@@ -7,12 +7,15 @@ import { CartContext } from "../context/CartContext.js";
 function ProductDetail() {
   const { products } = useContext(ProductContext);
   const { id } = useParams();
-  const { cartProducts, setCartProducts, cartTotal, setCartTotal } = useContext(CartContext);
+  const { setTotal, setCartProducts} = useContext(CartContext);
+  const [btnText, setButtonText] = useState("Add To Cart");
 
   function addItem(product) {
+    const price = Number(product.Price); // Always treat price as a number
+  
     setCartProducts(prev => {
       const existingProduct = prev.find(item => item.id === product.id);
-
+  
       if (existingProduct) {
         return prev.map(item =>
           item.id === product.id
@@ -27,16 +30,22 @@ function ProductDetail() {
             title: product.Title,
             image: product.Image,
             category: product.Cate,
-            price: product.Price,
+            price: price,
             author: product.Author,
             count: 1
           }
         ];
       }
     });
-
-    setCartTotal(prev => prev + product.Price);    
+  
+    setTotal(prev => prev + price);
+  
+    setButtonText("Added!");
+    setTimeout(() => {
+      setButtonText("Add To Cart");
+    }, 3000);
   }
+  
 
   if (!products || products.length === 0) {
     return <h2 id="NotFound">No Products Available</h2>;
@@ -64,7 +73,7 @@ function ProductDetail() {
         <p id="price-title">Price</p>
         <hr/>
         <p>USD {product.Price}</p>
-        <button onClick={() => addItem(product)}>Add To Cart</button>
+        <button onClick={() => addItem(product)}>{btnText}</button>
       </div>
     </div>
   );
