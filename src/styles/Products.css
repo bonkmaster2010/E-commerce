@@ -27,7 +27,7 @@
 }
 
 .product-detail img:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 

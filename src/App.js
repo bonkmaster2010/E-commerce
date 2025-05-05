@@ -106,30 +106,34 @@ function Home() {
         <span className="title-underline"></span>
       </h1>
 
-      <div className="product-cont">
-        {products.length === 0 ? (
-          <div className="empty-state">
-            <p>No products available yet.</p>
-            <button className="refresh-btn" onClick={() => window.location.reload()}>
-              Refresh Page
-            </button>
-          </div>
-        ) : filteredProducts.length === 0 ? (
-          <div className="empty-state">
-            <div className="search-empty-icon">🔍</div>
-            <p>No products match your search.</p>
-            <button 
-              className="clear-search-btn" 
-              onClick={() => {
-                setSearchTerm('');
-                setOpt('All');
-              }}
-            >
-              Clear Filters
-            </button>
-          </div>
-        ) : (
-          filteredProducts.map((product) => (
+      {products.length === 0 && (
+        <div className="empty-state">
+          <p>No products available yet.</p>
+          <button className="clear-search-btn" onClick={() => window.location.reload()}>
+            Refresh Page
+          </button>
+        </div>
+      )}
+
+      {filteredProducts.length === 0 && products.length > 0 && (
+        <div className="empty-state">
+          <div className="search-empty-icon">🔍</div>
+          <p>No products match your search.</p>
+          <button 
+            className="clear-search-btn" 
+            onClick={() => {
+              setSearchTerm('');
+              setOpt('All');
+            }}
+          >
+            Clear Filters
+          </button>
+        </div>
+      )}
+
+      {products.length !== 0 && filteredProducts.length !== 0 && (
+        <div className="product-cont">
+          {filteredProducts.map((product) => (
             <div 
               key={product.id} 
               className={`product ${addedItemId === product.id ? 'added-to-cart' : ''}`}
@@ -177,9 +181,9 @@ function Home() {
                 </div>
               </div>
             </div>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
